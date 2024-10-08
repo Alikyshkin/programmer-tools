@@ -13,7 +13,6 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@nuxtjs/composition-api": "^0.34.0",
     "clean-css": "^5.3.3",
     "html-minifier-terser": "^7.2.0",
     "javascript-obfuscator": "^4.1.1",
