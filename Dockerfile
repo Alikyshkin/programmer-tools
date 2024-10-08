@@ -7,20 +7,20 @@ LABEL maintainer="Alika Alikyshkin@gmail.com"
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Копируем package.json и package-lock.json
+# Копируем только package.json и package-lock.json для кеширования зависимостей
 COPY package*.json ./
 
-# Устанавливаем зависимости с флагом для экономии ресурсов
-RUN npm install --no-optional --max-old-space-size=512
+# Устанавливаем зависимости с ограничением памяти
+RUN npm install --no-optional --max-old-space-size=256
 
-# Копируем весь проект в контейнер
+# Копируем остальные файлы
 COPY . .
 
-# Собираем Nuxt приложение
+# Собираем приложение
 RUN npm run build
 
-# Указываем порт, который будет слушаться
+# Открываем порт
 EXPOSE 3000
 
-# Команда для запуска Nuxt приложения
+# Запускаем приложение
 CMD ["npm", "run", "start"]
