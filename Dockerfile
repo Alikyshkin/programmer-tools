@@ -2,7 +2,7 @@
 FROM node:18
 
 # Устанавливаем автора
-LABEL maintainer="Ваше Имя <ваш.email@example.com>"
+LABEL maintainer="Alika Alikyshkin@gmail.com"
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
