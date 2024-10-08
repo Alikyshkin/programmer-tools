@@ -8,5 +8,12 @@ export default defineNuxtConfig({
   ],
   eslint: {
     checker: true,
-  }
+  },
+  devServer: {
+    port: 3000,
+    host: '0.0.0.0',
+  },
+  nitro: {
+    preset: 'node-server',
+  },
 })
