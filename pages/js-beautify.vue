@@ -1,7 +1,7 @@
 <template>
   <BaseLayout>
-    <h1 class="text-2xl font-bold mb-4">HTML Minify</h1>
-    <TextEditor label="Введите HTML код" :action="minifyHtml" button-text="Minify" />
+    <h1 class="text-2xl font-bold mb-4">Javascript Beautify</h1>
+    <TextEditor label="Введите JS код" :action="beautifyJs" button-text="Beautify" />
   </BaseLayout>
 </template>
 
@@ -9,8 +9,8 @@
 import BaseLayout from '~/components/BaseLayout.vue';
 import TextEditor from '@/components/TextEditor.vue';
 
-async function minifyHtml(code) {
-  const response = await fetch('/api/minify-html', {
+async function beautifyJs(code) {
+  const response = await fetch('/api/beautify-js', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -18,6 +18,6 @@ async function minifyHtml(code) {
     body: JSON.stringify({ code }),
   });
   const data = await response.json();
-  return data.minifiedCode;
+  return data.beautifiedCode;
 }
 </script>

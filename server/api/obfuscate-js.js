@@ -1,8 +1,7 @@
-import { defineEventHandler, readBody } from 'h3';
-import JavaScriptObfuscator from 'javascript-obfuscator';
+import { defineEventHandler } from 'h3';
+import { readCodeFromRequest, obfuscateJs } from './helpers';
 
 export default defineEventHandler(async (event) => {
-  const { code } = await readBody(event);
-  const obfuscatedCode = JavaScriptObfuscator.obfuscate(code).getObfuscatedCode();
-  return { obfuscatedCode };
+  const code = await readCodeFromRequest(event);
+  return { obfuscatedCode: obfuscateJs(code) };
 });

@@ -16,4 +16,5 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'node-server',
   },
+  css: ['~/assets/main.css'],
 })

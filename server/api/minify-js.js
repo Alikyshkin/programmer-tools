@@ -1,16 +1,10 @@
-import { defineEventHandler, readBody } from 'h3';
-import { minify } from 'terser';
+import { defineEventHandler } from 'h3';
+import { readCodeFromRequest, minifyCode } from './helpers';
 
 export default defineEventHandler(async (event) => {
   try {
-    const { code } = await readBody(event);
-    const result = minify(code);
-
-    if (result.error) {
-      throw new Error(result.error);
-    }
-
-    return { minifiedCode: result.code };
+    const code = await readCodeFromRequest(event);
+    return { minifiedCode: await minifyCode(code, 'js') };
   } catch (error) {
     return { error: error.message };
   }
